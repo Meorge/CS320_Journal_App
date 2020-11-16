@@ -1,0 +1,12 @@
+@startuml context_diagram
+:User: as user
+(System) as system
+
+user -> system : Create journal entry
+user -> system : Edit journal entry
+user -> system : Delete journal entry
+user -> system : Create account
+system -> user : Read journal entry
+system -> user : View list of journal entries
+
+@enduml

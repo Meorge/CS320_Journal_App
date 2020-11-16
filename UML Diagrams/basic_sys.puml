@@ -1,0 +1,16 @@
+@startuml basic
+:Generic User: as userGen
+:User A: as userA
+:User B: as userB
+
+userGen <|-- userA
+userGen <|-- userB
+
+rectangle Application {
+    left to right direction
+    userA -> (Write Entry)
+    userA -> (Read Entry)
+    userA -> (Delete Entry)
+    userB -> (Read Entry)
+}
+@enduml
