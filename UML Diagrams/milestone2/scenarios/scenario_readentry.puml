@@ -1,3 +1,16 @@
 @startuml scenario_readentry
-
+|Client|
+start
+:Request contents\nof entry with ID;
+|Server|
+if (User has permission\nto view entry\nwith given ID?) then (yes)
+    :Send contents of entry with given ID\nto client;
+    |Client|
+    :Display entry contents;
+    stop
+else (no)
+    |Client|
+    :Display error message\n(not authorized to\nview this entry);
+    stop
+endif
 @enduml

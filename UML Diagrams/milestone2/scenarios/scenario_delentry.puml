@@ -1,3 +1,18 @@
 @startuml scenario_delentry
+|Client|
+start
+:Request entry with ID\nto be deleted;
+|Server|
+if (User has permission\nto delete entry\nwith given ID?) then (yes)
+    :Delete entry with given ID;
+    :Send confirmation message\nto client;
+    |Client|
+    :Display deletion confirmation;
+    stop
+else (no)
+    |Client|
+    :Display error message\n(not authorized to\ndelete this entry);
+    stop
+endif
 
 @enduml

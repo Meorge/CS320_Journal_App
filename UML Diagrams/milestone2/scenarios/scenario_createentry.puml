@@ -1,3 +1,17 @@
 @startuml scenario_createentry
-
+|Client|
+start
+:Request new entry\nfor logged in user;
+|Server|
+if (User has permission\nto create entries?) then (yes)
+    :Add a new entry\nowned by user\nto database;
+    :Send ID of new entry to user;
+else (no)
+    |Client|
+    :Display error message;
+    stop
+endif
+|Client|
+:Use received ID to open\nnew entry for editing;
+stop
 @enduml
