@@ -26,10 +26,24 @@ FlowRouter.route('/', {
   }
 });
 
+// TODO: Make this show the entry list page
+FlowRouter.route('/entries', {
+  name: 'index',
+  action() {
+    if (Meteor.user())
+      renderPage(<App/>);
+    else
+      FlowRouter.go('login');
+  }
+});
+
 FlowRouter.route('/edit/:_id', {
   name: 'edit',
   action(params) {
-    renderPage(<EditPage id={params._id} />);
+    if (Meteor.user())
+      renderPage(<EditPage id={params._id} />);
+    else
+      FlowRouter.go('/login');
   }
 });
 

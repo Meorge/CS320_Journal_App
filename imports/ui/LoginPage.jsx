@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Accounts } from 'meteor/accounts-base';
 
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+
 export class LoginPage extends Component {
 
     constructor(props) {
@@ -35,6 +37,8 @@ export class LoginPage extends Component {
                 function (err) {
                     if (!err) {
                         console.log("Success logging in!");
+                        console.log(`User ID is ${Meteor.userId()}`);
+                        FlowRouter.go('/entries');
                     } else {
                         console.log(err);
                     }
