@@ -52,6 +52,10 @@ export class LoginPage extends Component {
             Meteor.call('user.register', userData,
                 function (err, res) {
                     console.log(err, res);
+                    if (!err) {
+                        console.log("Creating account was a success I guess");
+                        FlowRouter.go('/entries');
+                    }
                 }
             );
         }
