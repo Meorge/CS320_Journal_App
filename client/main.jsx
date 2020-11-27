@@ -16,7 +16,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function renderPage(page) {
-  render(<Container content={page}/>, document.getElementById('react-target'));
+  render(<Container content={page} userId={Meteor.userId()} />, document.getElementById('react-target'));
 }
 
 FlowRouter.route('/', {
