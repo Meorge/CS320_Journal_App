@@ -33,6 +33,7 @@ export class Container extends Component {
 
     render() {
         console.log(this.props);
+        console.log(`Currently logged in: ${Meteor.userId()}`);
         return (
             <div className="">
               <nav className="navbar navbar-dark bg-dark navbar-expand">
@@ -52,7 +53,7 @@ export class Container extends Component {
                   {/* right-aligned item from https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items */}
                   <ul className="navbar-nav ml-auto">
                       <li className="nav-item mr-auto">
-                          <div className="nav-link active">{Meteor.user() ? Meteor.user().username : ''}</div>
+                          <div className="nav-link active">{this.props.userId ? (Meteor.user() ? Meteor.user().username : Meteor.userId()) : 'Not logged in'}</div>
                       </li>
                       <li className="nav-item">
                           <a className="btn btn-outline-light" onClick={this.goToLoginScreen}>{this.props.userId ? "Log out" : "Log in"}</a>
