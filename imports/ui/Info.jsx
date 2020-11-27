@@ -2,19 +2,11 @@ import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { LinksCollection } from '../api/links';
 
-export const Info = () => {
-  const links = useTracker(() => {
-    return LinksCollection.find().fetch();
-  });
-
+export const NotFound = () => {
   return (
     <div>
-      <h2>Learn Meteor!</h2>
-      <ul>{links.map(
-        link => <li key={link._id}>
-          <a href={link.url} target="_blank">{link.title}</a>
-        </li>
-      )}</ul>
+      <h1 className="text-center">Oops! This page couldn't be found.</h1>
+      <p className="text-center">You may have typed an invalid URL.</p>
     </div>
   );
 };
