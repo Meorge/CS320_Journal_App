@@ -40,7 +40,8 @@ FlowRouter.route('/entries', {
 FlowRouter.route('/edit/:_id', {
   name: 'edit',
   action(params) {
-    if (Meteor.user())
+    console.log(`Trying to go to edit page, user ID is ${Meteor.userId()}`);
+    if (Meteor.userId())
       renderPage(<EditPage id={params._id} />);
     else
       FlowRouter.go('/login');
