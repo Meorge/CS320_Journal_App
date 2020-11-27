@@ -6,6 +6,8 @@ import { App } from '/imports/ui/App';
 import { NotFound } from '/imports/ui/Info';
 import { EditPage } from '/imports/ui/EditPage';
 
+import { LoginPage } from '/imports/ui/LoginPage';
+
 import { Container } from '/imports/ui/Container';
 
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
@@ -28,6 +30,13 @@ FlowRouter.route('/edit/:_id', {
   name: 'edit',
   action(params) {
     renderPage(<EditPage id={params._id} />);
+  }
+});
+
+FlowRouter.route('/login', {
+  name: 'login',
+  action() {
+    renderPage(<LoginPage />);
   }
 });
 
