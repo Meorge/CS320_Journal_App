@@ -22,7 +22,7 @@ function renderPage(page) {
 FlowRouter.route('/', {
   name: 'index',
   action() {
-    renderPage(<App/>);
+    renderPage(<App />);
   }
 });
 
