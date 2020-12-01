@@ -5,7 +5,8 @@ import { render } from 'react-dom';
 import { App } from '/imports/ui/App';
 import { NotFound } from '/imports/ui/Info';
 import { EditPage } from '/imports/ui/EditPage';
-import { ReadEntries } from '/imports/ui/ReadEntries';
+import { ReadEntry } from '/imports/ui/ReadEntry';
+import { ListEntries } from '/imports/ui/ListEntries';
 
 import { LoginPage } from '/imports/ui/LoginPage';
 
@@ -32,7 +33,8 @@ FlowRouter.route('/', {
 FlowRouter.route('/entries', {
   name: 'entries',
   action() {
-    renderPage(<ReadEntries/>);
+    renderPage(<ListEntries/>);
+    //renderPage(<ReadEntry/>); remove later
     /*if (Meteor.user())
       renderPage(<App/>);
     else

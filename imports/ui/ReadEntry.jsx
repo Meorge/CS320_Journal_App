@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import {getElementById} from "domutils";
 
-export class ReadEntries extends Component {
+export class ReadEntry extends Component {
     render() {
         return (
             <div>
