@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { App } from '/imports/ui/App';
 import { NotFound } from '/imports/ui/Info';
 import { EditPage } from '/imports/ui/EditPage';
+import { ReadEntries } from '/imports/ui/ReadEntries';
 
 import { LoginPage } from '/imports/ui/LoginPage';
 
@@ -27,13 +28,17 @@ FlowRouter.route('/', {
 });
 
 // TODO: Make this show the entry list page
+// 11/30/2020: Just need to get the functionality of read entries then un comment if and else satements
 FlowRouter.route('/entries', {
-  name: 'index',
+  name: 'entries',
   action() {
-    if (Meteor.user())
+    renderPage(<ReadEntries/>);
+    /*if (Meteor.user())
       renderPage(<App/>);
     else
-      FlowRouter.go('login');
+      renderPage(<readEntry/>);
+      //renderPage(<readEntry/>);
+      //FlowRouter.go('login'); */
   }
 });
 
