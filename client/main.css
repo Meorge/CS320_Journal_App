@@ -4,6 +4,13 @@ body {
   font-family: sans-serif;
 }
 
+/* For front page */
+.frontpage-cover {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+
 /* Adapted from the Bootstrap Sign-In template's CSS files */
 .form-signin {
   width: 100%;

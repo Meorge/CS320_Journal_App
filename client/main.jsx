@@ -22,7 +22,7 @@ function renderPage(page) {
 FlowRouter.route('/', {
   name: 'index',
   action() {
-    renderPage(<App/>);
+    renderPage(<App />);
   }
 });
 
@@ -34,6 +34,22 @@ FlowRouter.route('/entries', {
       renderPage(<App/>);
     else
       FlowRouter.go('login');
+  }
+});
+
+FlowRouter.route('/new', {
+  name: 'createNew',
+  action() {
+    if (Meteor.userId()) {
+      console.log("Attempt to create a new entry");
+      Meteor.call('entries.createNew', (err, res) => {
+        console.log("something happened");
+        console.log(err, res);
+        if (res) {
+          FlowRouter.go('edit', {_id: res});
+        }
+      });
+    }
   }
 });
 
@@ -56,6 +72,12 @@ FlowRouter.route('/login', {
 });
 
 FlowRouter.route('*', {
+  action() {
+    FlowRouter.go('error');
+  }
+});
+
+FlowRouter.route('/error', {
   action() {
     console.log("not found 404 lol");
     renderPage(<NotFound/>);
