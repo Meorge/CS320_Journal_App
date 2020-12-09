@@ -41,6 +41,33 @@ Meteor.methods({
         return id;
     },
 
+    'entries.isOwner' (entryId) {
+        console.log('see if user can access this entry');
+        if (!Meteor.user()) {
+            console.log("No user is logged in!");
+            return false;
+        }
+        
+        let entry = JournalEntryCollection.findOne({_id: entryId});
+
+        if (!entry) {
+            console.log(`entry with ID ${entryId} wasn't found`);
+            return false;
+        }
+
+        console.log(`Entry found: ${entry._id}, ${entry.text}`);
+
+        // TODO: Ensure that the logged in user is authorized to view
+        // the text
+
+        if (entry.ownerId != Meteor.userId()) {
+            console.log(`This entry belongs to ${entry.ownerId} but the logged in user is ${Meteor.userId()}`);
+            return false;
+        }
+
+        return true;
+    },
+
     'entries.get' (entryId) {
         console.log('get text for entry');
         if (!Meteor.user()) {
@@ -59,6 +86,12 @@ Meteor.methods({
 
         // TODO: Ensure that the logged in user is authorized to view
         // the text
+
+        if (entry.ownerId != Meteor.userId()) {
+            console.log(`This entry belongs to ${entry.ownerId} but the logged in user is ${Meteor.userId()}`);
+            throw Error("Logged in user does not have permission to view this entry");
+        }
+
         return entry;
     },
 
