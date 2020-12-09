@@ -57,10 +57,14 @@ FlowRouter.route('/edit/:_id', {
   name: 'edit',
   action(params) {
     console.log(`Trying to go to edit page, user ID is ${Meteor.userId()}`);
-    if (Meteor.userId())
-      renderPage(<EditPage id={params._id} />);
-    else
-      FlowRouter.go('/login');
+    Meteor.call('entries.isOwner', params._id, (err, res) => {
+      console.log(err, res);
+      if (err || res == false) {
+        FlowRouter.go('error');
+      } else {
+        renderPage(<EditPage id={params._id} />);
+      }
+    }); 
   }
 });
 
@@ -78,6 +82,7 @@ FlowRouter.route('*', {
 });
 
 FlowRouter.route('/error', {
+  name: 'error',
   action() {
     console.log("not found 404 lol");
     renderPage(<NotFound/>);
