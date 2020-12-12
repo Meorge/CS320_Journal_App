@@ -31,9 +31,8 @@ if (Meteor.isServer) {
             console.log("No user is logged in!");
             throw Error("User is not logged in");
         }
-        
+
         let allEntries = JournalEntryCollection.find({ownerId: Meteor.userId()});
-        console.log(allEntries);
         return allEntries;
     });
 }

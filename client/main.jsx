@@ -6,7 +6,7 @@ import { mount } from 'react-mounter';
 import { App } from '/imports/ui/App';
 import { NotFound } from '/imports/ui/Info';
 
-import { ListPageContainer_Malcolm } from '/imports/ui/ListPage_Malcolm';
+import ListPageContainer_Malcolm from '/imports/ui/ListPage_Malcolm';
 import { EditPage } from '/imports/ui/EditPage';
 
 import { LoginPage } from '/imports/ui/LoginPage';
