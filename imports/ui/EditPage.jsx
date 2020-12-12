@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 export class EditPage extends Component {
     constructor(props) {
@@ -21,6 +22,8 @@ export class EditPage extends Component {
         this.state = { entryContents: '', entry: null };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitAndView = this.handleSubmitAndView.bind(this);
+
         this.handleContentsChanged = this.handleContentsChanged.bind(this);
         this.getSuccessIcon = this.getSuccessIcon.bind(this);
         this.getSaveSuccessBox = this.getSaveSuccessBox.bind(this);
@@ -45,6 +48,11 @@ export class EditPage extends Component {
 
         // TODO: Redirect to the view page
         console.log("try to submit it");
+    }
+
+    handleSubmitAndView() {
+        this.handleSubmit();
+        FlowRouter.go('view', {_id: this.props.id});
     }
 
     handleContentsChanged(event) {
@@ -97,7 +105,8 @@ export class EditPage extends Component {
               {this.getSaveSuccessBox()}
               <div className="container">
                   <textarea value={this.state.entryContents ? this.state.entryContents : ''} onChange={this.handleContentsChanged} className="form-control"/>
-                  <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Save</button> 
+                  <button type="submit" className="btn btn-outline-primary" onClick={this.handleSubmit}>Save</button>
+                  <button type="submit" className="btn btn-primary" onClick={this.handleSubmitAndView}>Save &amp; View</button> 
               </div>
             </div>
         );
