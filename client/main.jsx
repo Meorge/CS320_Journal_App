@@ -12,11 +12,13 @@ import { EditPage } from '/imports/ui/EditPage';
 import { LoginPage } from '/imports/ui/LoginPage';
 
 import { Container } from '/imports/ui/Container';
+import { ViewPage_Malcolm } from '/imports/ui/ViewPage_Malcolm';
 
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 FlowRouter.route('/', {
   name: 'index',
@@ -53,6 +55,22 @@ FlowRouter.route('/new', {
         }
       });
     }
+  }
+});
+
+FlowRouter.route('/view/:_id', {
+  name: 'view',
+  action(params) {
+    console.log(`Trying to go to view page, user ID is ${Meteor.userId()}`);
+    Meteor.call('entries.isOwner', params._id, (err, res) => {
+      console.log(err, res);
+      if (err || res == false) {
+        FlowRouter.go('error');
+      } else {
+        // renderPage(<EditPage id={params._id} />);
+        mount(Container, { main: <ViewPage_Malcolm id={params._id} />});
+      }
+    }); 
   }
 });
 

@@ -41,7 +41,7 @@ export class LoginPage extends Component {
                         console.log("Success logging in!");
                         console.log(`User ID is ${Meteor.userId()}`);
                         this.setState({error: null});
-                        FlowRouter.go('/entries');
+                        FlowRouter.go('index');
 
                     } else {
                         console.log(err);
@@ -59,7 +59,7 @@ export class LoginPage extends Component {
                     console.log(err, res);
                     if (!err) {
                         console.log("Creating account was a success I guess");
-                        FlowRouter.go('/entries');
+                        FlowRouter.go('index');
                     } else {
                         this.setState({error: err});
                     }
