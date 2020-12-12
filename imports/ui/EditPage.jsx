@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { JournalEntryCollection } from '/imports/api/JournalEntryCollection';
 
 export class EditPage extends Component {
     constructor(props) {

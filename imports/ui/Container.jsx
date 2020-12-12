@@ -60,7 +60,7 @@ export class Container extends Component {
                       </li>
                   </ul>
               </nav>
-              <main role="main" className="container p-3">{this.props.content}</main>
+              <main role="main" className="container p-3">{this.props.main}</main>
             </div>
           );
     }
