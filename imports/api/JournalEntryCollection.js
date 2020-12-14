@@ -24,6 +24,18 @@ export const createDefaultEntry = () => {
 };
 
 
+if (Meteor.isServer) {
+    Meteor.publish('entries.getAllForUser', function() {
+        console.log("get all entries for logged in user");
+        if (!Meteor.user()) {
+            console.log("No user is logged in!");
+            throw Error("User is not logged in");
+        }
+
+        let allEntries = JournalEntryCollection.find({ownerId: Meteor.userId()});
+        return allEntries;
+    });
+}
 
 
 Meteor.methods({
@@ -67,6 +79,7 @@ Meteor.methods({
 
         return true;
     },
+
 
     'entries.get' (entryId) {
         console.log('get text for entry');
