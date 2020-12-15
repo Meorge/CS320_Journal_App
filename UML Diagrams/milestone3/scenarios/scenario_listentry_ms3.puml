@@ -1,0 +1,17 @@
+@startuml scenario_listentry_ms3
+|Client|
+start
+:Request to get entries belonging to current user;
+|Server|
+if (User has permission\nto view their entries?) then (yes)
+    :Find entries belonging\nto user;
+    :Send list of entries\nto user;
+    |Client|
+    :Display list of entries;
+    stop
+else (no)
+    |Client|
+    :Display error message\n(not authorized to view\nlist of entries);
+    stop
+endif
+@enduml

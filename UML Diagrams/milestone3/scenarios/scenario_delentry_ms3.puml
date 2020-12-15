@@ -1,0 +1,18 @@
+@startuml scenario_delentry_ms3
+|Client|
+start
+:Request entry with ID\nto be deleted;
+|Server|
+if (Logged-in user is owner\nof entry with given ID?) then (yes)
+    :Delete entry with given ID;
+    :Send confirmation message\nto client;
+    |Client|
+    :Display deletion confirmation;
+    stop
+else (no)
+    |Client|
+    :Display error message\n(not authorized to\ndelete this entry);
+    stop
+endif
+
+@enduml
