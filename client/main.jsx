@@ -4,6 +4,7 @@ import { mount } from 'react-mounter';
 
 import { App } from '/imports/ui/App';
 import { NotFound } from '/imports/ui/Info';
+import { Help } from '/imports/ui/Help';
 
 import ListPageContainer_Malcolm from '/imports/ui/ListPage_Malcolm';
 import { EditPage } from '/imports/ui/EditPage';
@@ -94,6 +95,15 @@ FlowRouter.route('/login', {
   action() {
     // renderPage(<LoginPage />);
     mount(Container, { main: <LoginPage />});
+  }
+});
+
+FlowRouter.route('/help', {
+  name: 'help',
+  action() {
+    console.log("help page");
+    // renderPage(<help/>);
+    mount(Container, { main: <Help />});
   }
 });
 
