@@ -49,7 +49,7 @@ export class Container extends Component {
                           <a className="nav-link" href="/entries">My Entries</a>
                       </li>
                       <li className="nav-item" href="#">
-                          <a className="nav-link" href="#">Help</a>
+                          <a className="nav-link" href="/help">Help</a>
                       </li>
                   </ul>
           
