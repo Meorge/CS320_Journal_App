@@ -14,6 +14,7 @@ class ListPage_Malcolm extends React.Component {
         return (
             <div>
               <h2>My Entries</h2>
+              <a onClick={() => { FlowRouter.go('createNew'); }} className="btn btn-primary">Create New Entry</a>
               <div className="container">
                   {this.props.entries.map((a) => <ListPageItem_Malcolm entry={a} key={a._id} />)}
               </div>
@@ -34,6 +35,7 @@ class ListPageItem_Malcolm extends React.Component {
                     <h5 className="card-title">{this.props.entry.creationDate.toString()}</h5>
                     <p className="card-text">{this.props.entry.text}</p>
                     <a onClick={() => { FlowRouter.go('view', {_id: this.props.entry._id}); }} className="btn btn-primary stretched-link">View</a>
+                    <a onClick={() => { Meteor.call('entries.delete', this.props.entry._id); }} className="btn btn-danger stretched-link">Delete</a>
                 </div>
             </div>
         );
