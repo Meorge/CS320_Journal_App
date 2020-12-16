@@ -15,10 +15,8 @@ Fields/things we need
 export const createDefaultEntry = () => {
     let entry = {
         ownerId: '',
-        editPermIds: [],
-        viewPermIds: [],
         creationDate: new Date(),
-        text: 'This is a test journal entry.'
+        text: ''
     };
     return entry;
 };
