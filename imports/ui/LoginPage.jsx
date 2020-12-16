@@ -18,6 +18,7 @@ export class LoginPage extends Component {
         this.state = { loginMode: true, error: null };
 
         this.toggleMode = this.toggleMode.bind(this);
+        this.tryLogin = this.tryLogin.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCreateUserResult = this.handleCreateUserResult.bind(this);
 
@@ -31,24 +32,28 @@ export class LoginPage extends Component {
         this.setState({loginMode: !this.state.loginMode, error: null});
     }
 
+    tryLogin() {
+        Meteor.loginWithPassword(this.state.username, this.state.password,
+            (err) => {
+                if (!err) {
+                    console.log("Success logging in!");
+                    console.log(`User ID is ${Meteor.userId()}`);
+                    this.setState({error: null});
+                    FlowRouter.go('index');
+
+                } else {
+                    console.log(err);
+                    this.setState({error: err});
+                }
+            }  
+        );
+    }
+
     handleSubmit() {
         console.log("submit time");
         // Try to log in!
         if (this.state.loginMode) {
-            Meteor.loginWithPassword(this.state.username, this.state.password,
-                (err) => {
-                    if (!err) {
-                        console.log("Success logging in!");
-                        console.log(`User ID is ${Meteor.userId()}`);
-                        this.setState({error: null});
-                        FlowRouter.go('index');
-
-                    } else {
-                        console.log(err);
-                        this.setState({error: err});
-                    }
-                }  
-            );
+            this.tryLogin();
         }
         
         // Try to sign up!
@@ -59,7 +64,7 @@ export class LoginPage extends Component {
                     console.log(err, res);
                     if (!err) {
                         console.log("Creating account was a success I guess");
-                        FlowRouter.go('index');
+                        this.tryLogin();
                     } else {
                         this.setState({error: err});
                     }

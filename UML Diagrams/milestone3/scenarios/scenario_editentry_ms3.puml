@@ -1,0 +1,29 @@
+@startuml scenario_editentry_ms3
+|Client|
+start
+:Request contents\nof entry with ID;
+|Server|
+if (Logged-in user\nis owner of entry\nwith given ID?) then (yes)
+    :Send contents of entry with given ID\nto client;
+    |Client|
+    :Display entry contents\nin editor;
+else (no)
+    :Display error message;
+    stop
+endif
+
+:User edits entry contents\nin editor;
+:Request to set\ncontents of entry with given ID;
+|Server|
+if (Logged-in user\nis owner of entry\nwith given ID?) then (yes)
+    :Set contents of entry with given ID;
+    :Send confirmation message\nto client;
+    |Client|
+    :Display updated entry;
+    stop
+else (no)
+    |Client|
+    :Display error message;
+    stop
+endif
+@enduml

@@ -104,7 +104,7 @@ export class EditPage extends Component {
               <h4>{this.state.entry ? this.state.entry.creationDate.toString() : 'Date goes here, usually'}</h4>
               {this.getSaveSuccessBox()}
               <div className="container">
-                  <textarea value={this.state.entryContents ? this.state.entryContents : ''} onChange={this.handleContentsChanged} className="form-control"/>
+                  <textarea value={this.state.entryContents ? this.state.entryContents : ''} onChange={this.handleContentsChanged} className="form-control" placeholder="What's going on?"/>
                   <button type="submit" className="btn btn-outline-primary" onClick={this.handleSubmit}>Save</button>
                   <button type="submit" className="btn btn-primary" onClick={this.handleSubmitAndView}>Save &amp; View</button> 
               </div>

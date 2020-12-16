@@ -1,0 +1,17 @@
+@startuml scenario_createentry_ms3
+|Client|
+start
+:Request new entry\nfor user;
+|Server|
+if (User is logged in?) then (yes)
+    :Add a new entry\nowned by logged-in user\nto database;
+    :Send ID of new entry to user;
+else (no)
+    |Client|
+    :Display login screen;
+    stop
+endif
+|Client|
+:Use received ID to open\nnew entry for editing;
+stop
+@enduml
