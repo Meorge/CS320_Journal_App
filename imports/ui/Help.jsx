@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap';
-import { ListGroup } from 'react-bootstrap';
 
 export const Help = () => {
   return (
@@ -24,17 +23,30 @@ export const Help = () => {
     <div className="card">
         <div className="card-body">
           <h2 className="card-title">Create New Entries.</h2>
-          <p className="card-text">Documentation Pending</p>
+          <p className="card-text">New Entries can be created under the "My Entries" Tab</p>
+          <p className="card-text">The text box will initally be empty, and you can write as you see fit. There are two options for saving:</p>
+          <p className="card-text">1. "Save" which will simply Save the updated Entry.</p>
+          <p className="card-text">2. "Save & View" which saves, but also moves the user to the "View Entry" Page.</p>
         </div>
     </div>
 
     <div className="card">
         <div className="card-body">
           <h2 className="card-title">Edit your existing entries.</h2>
-          <p className="card-text">Documentation Pending</p>
+          <p className="card-text">Entries can be edited under the "My Entries" Tab</p>
+          <p className="card-text">The text box contents will be populated with the last save's. Saving is the same process as creating:</p>
+          <p className="card-text">1. "Save" which will simply Save the updated Entry.</p>
+          <p className="card-text">2. "Save & View" which saves, but also moves the user to the "View Entry" Page.</p>
         </div>
     </div>
 
+    <div className="card">
+        <div className="card-body">
+          <h2 className="card-title">Unathorized Page.</h2>
+          <p className="card-text">If you've encountered this page, you've attempted to access an invalid page or unathorized Journal entry.</p>
+          <p className="card-text">Please Contact us If you believe there is a mistake..</p>
+        </div>
+    </div>
 </div>
   );
 }
