@@ -1,0 +1,40 @@
+@startuml
+title Sequence Diagram
+== Flow 1 - View entry==
+actor "User" as MR
+participant "JE: Journal Entries" as JE
+database "D: MeteorDB" as D
+control "Auth: Authorization" as AS
+activate MR
+MR -> JE: "entries.getAllForUser"
+activate JE
+JE -> D: "entries.get(EntryID)"
+activate D
+D -> AS: "entry.isOwner(EntryID)"
+activate AS
+AS --> D: "authorize"
+deactivate AS
+alt Authorization OK
+D --> JE: "Send EntryText"
+JE --> MR: "ViewEntryText"
+else Authorization fail
+D --> JE: "Error"
+deactivate D
+JE --> MR: "ViewEntry Error Message"
+end
+== Flow 2 - Create entry==
+MR -> JE: "entries.createNew()"
+JE -> D: "entires.createNew()"
+D -> AS: "entry.isOwner(EntryID)"
+AS --> D: "authorize"
+alt Authorization OK
+D --> JE: "entries.setText(entryID,newText)"
+JE --> MR: "entries.setText(entryID,newText)"
+else Authorization fail
+D --> JE: "Error (no access)"
+deactivate D
+JE --> MR: "Error Message"
+deactivate JE
+deactivate MR
+end
+@enduml
