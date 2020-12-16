@@ -67,9 +67,6 @@ Meteor.methods({
 
         console.log(`Entry found: ${entry._id}, ${entry.text}`);
 
-        // TODO: Ensure that the logged in user is authorized to view
-        // the text
-
         if (entry.ownerId != Meteor.userId()) {
             console.log(`This entry belongs to ${entry.ownerId} but the logged in user is ${Meteor.userId()}`);
             return false;
@@ -95,9 +92,6 @@ Meteor.methods({
 
         console.log(`Entry found: ${entry._id}, ${entry.text}`);
 
-        // TODO: Ensure that the logged in user is authorized to view
-        // the text
-
         if (entry.ownerId != Meteor.userId()) {
             console.log(`This entry belongs to ${entry.ownerId} but the logged in user is ${Meteor.userId()}`);
             throw Error("Logged in user does not have permission to view this entry");
@@ -121,14 +115,31 @@ Meteor.methods({
         }
 
         console.log(`Entry found: ${entry._id}, ${entry.text}`);
-        
-        // TODO: Ensure that the logged in user is authorized to view
-        // the text
 
         // Set entry contents
         return JournalEntryCollection.update({_id: entryId}, {
             '$set': { 'text': newText }
         });
+    },
 
-    }
+    'entries.delete' (entryId) {
+        console.log('delete entry');
+        if (!Meteor.user()) {
+            console.log("No user is logged in!");
+            throw Error("User is not logged in");
+        }
+        
+        let entry = JournalEntryCollection.findOne({_id: entryId});
+
+        if (!entry) {
+            console.log(`entry with ID ${entryId} wasn't found`);
+            throw Error("Unable to find entry with given ID");
+        }
+
+        console.log(`Entry found: ${entry._id}, ${entry.text}`);
+
+        // Set entry contents
+        return JournalEntryCollection.remove({_id: entryId});
+    },
+
 })
