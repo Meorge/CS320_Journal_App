@@ -15,12 +15,6 @@ Once this is complete, start Journaler by running the command
 meteor
 ```
 
-These should be all of the steps necessary to get Journaler up and running. If you follow these instructions and the program is still not running, please contact one of the team members and we can help you get it set up:
-- Malcolm Anderson (malcolm.i.anderson@wsu.edu)
-- Antonio Maniscalco (antonio.maniscalco@wsu.edu)
-- Chase Jamieson (chase.jamieson@wsu.edu)
-
-
 ## Windows
 In Windows PowerShell-administrative shell, run the following command:
 ```
@@ -35,6 +29,11 @@ In the project's directory, start Journaler by running the command
 ```
 meteor
 ```
+
+These should be all of the steps necessary to get Journaler up and running. If you follow these instructions and the program is still not running, please contact one of the team members and we can help you get it set up:
+- Malcolm Anderson (malcolm.i.anderson@wsu.edu)
+- Antonio Maniscalco (antonio.maniscalco@wsu.edu)
+- Chase Jamieson (chase.jamieson@wsu.edu)
 
 ## Developing with IntelliJ
 IntelliJ can interface with Meteor:
