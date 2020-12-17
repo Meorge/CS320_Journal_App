@@ -25,10 +25,11 @@ These should be all of the steps necessary to get Journaler up and running. If y
 
 ## Developing with IntelliJ
 IntelliJ can interface with Meteor:
-- If running in the Intellij IDE, select `Edit Configurations`.
+- If running in the Intellij IDE, select `Edit Configurations`.<br/>
        ![image](https://user-images.githubusercontent.com/73863212/102423397-c7e56300-3fbd-11eb-904e-81d3b178506e.png)
-- Select the `+` to add a new configuration.
+
+- Select the `+` to add a new configuration.<br/>
         ![image](https://user-images.githubusercontent.com/73863212/102423528-198ded80-3fbe-11eb-91d6-0d5023314bbf.png)
-- Select Meteor, name the configuration, and click `OK`.
-        ![image](https://user-images.githubusercontent.com/73863212/102423543-1eeb3800-3fbe-11eb-978b-a3b720d071d9.png)
+- Select Meteor, name the configuration, and click `OK`.<br/>
+        ![image](https://user-images.githubusercontent.com/73863212/102423543-1eeb3800-3fbe-11eb-978b-a3b720d071d9.png)<br/>
         ![image](https://user-images.githubusercontent.com/73863212/102423543-1eeb3800-3fbe-11eb-978b-a3b720d071d9.png)
