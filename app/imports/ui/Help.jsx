@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap';
 
+// This is the help page accessible from the navbar
 export const Help = () => {
   return (
     <div>

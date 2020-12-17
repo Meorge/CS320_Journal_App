@@ -4,6 +4,7 @@ import { JournalEntryCollection } from '../api/JournalEntryCollection';
 import PropTypes from 'prop-types';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
+// This page displays a list of the user's entries
 class ListPage_Malcolm extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +24,7 @@ class ListPage_Malcolm extends React.Component {
     }
 }
 
+// Single item in the list of entries
 class ListPageItem_Malcolm extends React.Component {
     constructor(props) {
         super(props);
@@ -42,11 +44,13 @@ class ListPageItem_Malcolm extends React.Component {
     }
 }
 
+// States what properties/arguments the ListPage_Malcolm object expects
 ListPage_Malcolm.propTypes = {
     entries: PropTypes.array,
     loading: PropTypes.bool
 };
 
+// Handles the asynchronous process of loading the entries belonging to the current user
 const ListPageContainer_Malcolm = withTracker(() => {
     const handle = Meteor.subscribe('entries.getAllForUser');
     const loading = !handle.ready();
