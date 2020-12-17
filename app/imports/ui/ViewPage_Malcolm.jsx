@@ -7,7 +7,6 @@ export class ViewPage_Malcolm extends Component {
 
         let id = props.id;
 
-        // TODO: Get the contents of the entry from the ID
         Meteor.call('entries.get', id, (err, res) => {
             console.log(`entries.get - err = ${err}, res = ${res}`);
             if (res) {
@@ -17,7 +16,6 @@ export class ViewPage_Malcolm extends Component {
             }
         });
 
-        // TODO: Assign the entry contents to the state
         this.state = { entryContents: '', entry: null };
 
         this.goToEditEntry = this.goToEditEntry.bind(this);
