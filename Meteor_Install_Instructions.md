@@ -31,3 +31,4 @@ IntelliJ can interface with Meteor:
         ![image](https://user-images.githubusercontent.com/73863212/102423528-198ded80-3fbe-11eb-91d6-0d5023314bbf.png)
 - Select Meteor, name the configuration, and click `OK`.
         ![image](https://user-images.githubusercontent.com/73863212/102423543-1eeb3800-3fbe-11eb-978b-a3b720d071d9.png)
+        ![image](https://user-images.githubusercontent.com/73863212/102423543-1eeb3800-3fbe-11eb-978b-a3b720d071d9.png)
