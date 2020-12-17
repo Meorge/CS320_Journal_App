@@ -15,13 +15,25 @@ Once this is complete, start Journaler by running the command
 meteor
 ```
 
+## Windows
+In Windows PowerShell-administrative shell, run the following command:
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+Wait a few Seconds for this to complete, if you don't see any errors run the command:
+```
+choco install meteor
+```
+Once this is complete, meteor should be installed on your device. 
+In the project's directory, start Journaler by running the command
+```
+meteor
+```
+
 These should be all of the steps necessary to get Journaler up and running. If you follow these instructions and the program is still not running, please contact one of the team members and we can help you get it set up:
 - Malcolm Anderson (malcolm.i.anderson@wsu.edu)
 - Antonio Maniscalco (antonio.maniscalco@wsu.edu)
 - Chase Jamieson (chase.jamieson@wsu.edu)
-
-
-## Windows
 
 ## Developing with IntelliJ
 IntelliJ can interface with Meteor:
