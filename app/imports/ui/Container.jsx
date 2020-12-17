@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
-
+// This is the page "container", including the navbar at the top of every page.
+// By doing this, we don't have to copy the HTML code for the navbar into every page for the app.
 export class Container extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +16,7 @@ export class Container extends Component {
         this.goToLoginScreen = this.goToLoginScreen.bind(this);
     }
 
+    // Directs the user to the login screen
     goToLoginScreen() {
         if (Meteor.userId()) {
             // log out
@@ -31,12 +33,7 @@ export class Container extends Component {
         }
     }
 
-    componentDidUpdate() {
-        console.log("container will update, current user is", Meteor.userId());
-    }
-
     render() {
-        console.log(`Currently logged in: ${Meteor.userId()}`);
         return (
             <div className="">
               <nav className="navbar navbar-dark bg-dark navbar-expand">

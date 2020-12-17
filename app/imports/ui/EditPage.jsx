@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
+// This page allows the user to edit the contents of a single journal entry
 export class EditPage extends Component {
     constructor(props) {
         super(props);
 
         let id = props.id;
 
-        // TODO: Get the contents of the entry from the ID
+        // Get the contents of the entry from the ID
         Meteor.call('entries.get', id, (err, res) => {
             console.log(`entries.get - err = ${err}, res = ${res}`);
             if (res) {
@@ -17,8 +18,7 @@ export class EditPage extends Component {
             }
         });
 
-        // TODO: Assign the entry contents to the state
-
+        // Initialize entry to null
         this.state = { entryContents: '', entry: null };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,8 +29,9 @@ export class EditPage extends Component {
         this.getSaveSuccessBox = this.getSaveSuccessBox.bind(this);
     }
 
+    // Called when the user attempts to save the entry
     handleSubmit() {
-        // TODO: Request server to update contents of entry
+        // Request server to update contents of entry
         Meteor.call('entries.setText', this.props.id, this.state.entryContents, (err, res) => {
             console.log(`called entries.setText; err = ${err}, res = ${res}`);
             if (res) {
@@ -45,20 +46,21 @@ export class EditPage extends Component {
                 console.log(err);
             }
         });
-
-        // TODO: Redirect to the view page
-        console.log("try to submit it");
     }
 
+    // Called when the user attempts to save the entry and exit out of edit mode
+    // (i.e. they click "Save & View")
     handleSubmitAndView() {
         this.handleSubmit();
         FlowRouter.go('view', {_id: this.props.id});
     }
 
+    // Called whenever the text box's contents change, so that we keep track of its contents
     handleContentsChanged(event) {
         this.setState({entryContents: event.target.value});
     }
 
+    // Returns an icon indicating success
     getSuccessIcon() {
         return (
             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,6 +69,7 @@ export class EditPage extends Component {
         );
     }
 
+    // Returns an icon indicating failure
     getErrorIcon() {
         return (
             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-exclamation-diamond-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -75,9 +78,8 @@ export class EditPage extends Component {
         );
     }
 
+    // Returns a small box that says that saving was successful or not successful
     getSaveSuccessBox() {
-        // if (!this.state.error) return (<div></div>);
-        console.log(this.state.saved);
         if (typeof this.state.saved !== 'undefined') {
             if (this.state.saved)
                 return (
@@ -97,7 +99,6 @@ export class EditPage extends Component {
     }
 
     render() {
-        
         return (
             <div>
               <h2>Edit Entry</h2>

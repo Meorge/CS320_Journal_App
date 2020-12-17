@@ -4,17 +4,14 @@ import { Accounts } from 'meteor/accounts-base';
 
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
+// This is the Login/Create Account page
 export class LoginPage extends Component {
 
     constructor(props) {
         super(props);
 
-        // TODO: Get the contents of the entry from the ID
-        // TODO: Assign the entry contents to the state
-
         // Login modes:
         // True for logging in, false for creating account
-
         this.state = { loginMode: true, error: null };
 
         this.toggleMode = this.toggleMode.bind(this);
@@ -28,10 +25,12 @@ export class LoginPage extends Component {
         this.getErrorMessageBox = this.getErrorMessageBox.bind(this);
     }
 
+    // Switches between Login and Create Account modes
     toggleMode() {
         this.setState({loginMode: !this.state.loginMode, error: null});
     }
 
+    // Attempt to login using the currently typed username and password
     tryLogin() {
         Meteor.loginWithPassword(this.state.username, this.state.password,
             (err) => {
@@ -49,6 +48,8 @@ export class LoginPage extends Component {
         );
     }
 
+    // Depending on the current login mode, either try to login or create an account
+    // with the currently typed username and password
     handleSubmit() {
         console.log("submit time");
         // Try to log in!
@@ -77,16 +78,19 @@ export class LoginPage extends Component {
         console.log(error);
     }
 
+    // Whenever the text in the username field is changed, update the stored value
     updateUsername(event) {
         this.setState({username: event.target.value});
         console.log(`Update username to ${event.target.value}`);
     }
 
+    // Whenever the text in the password field is changed, update the stored value
     updatePassword(event) {
         this.setState({password: event.target.value});
         console.log(`Update password to ${event.target.value}`);
     }
 
+    // Returns an icon indicating failure
     getErrorIcon() {
         return (
             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-exclamation-diamond-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -94,6 +98,9 @@ export class LoginPage extends Component {
             </svg>
         );
     }
+
+    // Returns a small box that says that logging in or creating an account was
+    // unsuccessful and displays the reason why
     getErrorMessageBox() {
         if (!this.state.error) return (<div></div>);
         return (

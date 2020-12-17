@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTracker } from 'meteor/react-meteor-data';
 
+// This is the page that appears when the user attempts to access an invalid or unauthorized page
 export const NotFound = () => {
   return (
     <div>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import 'bootstrap';
 
+// This is the homepage/landing page
 export const App = () => (
   <div>
     <div className="jumbotron text-center">

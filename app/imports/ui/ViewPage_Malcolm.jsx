@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
+// Displays the contents of a single entry
 export class ViewPage_Malcolm extends Component {
     constructor(props) {
         super(props);
 
+        // Retrieve the contents of the current entry
         let id = props.id;
-
-        // TODO: Get the contents of the entry from the ID
         Meteor.call('entries.get', id, (err, res) => {
             console.log(`entries.get - err = ${err}, res = ${res}`);
             if (res) {
@@ -17,12 +17,14 @@ export class ViewPage_Malcolm extends Component {
             }
         });
 
-        // TODO: Assign the entry contents to the state
+        // Initialize the current entry to null, and the contents to be empty
+        // (so until the contents are retrieved, the page will act like it's an empty entry)
         this.state = { entryContents: '', entry: null };
 
         this.goToEditEntry = this.goToEditEntry.bind(this);
     }
 
+    // Directs the user to the "Edit Entry" page for this entry
     goToEditEntry() {
         console.log(this.state.entry);
         FlowRouter.go('edit', {_id: this.state.entry._id});
